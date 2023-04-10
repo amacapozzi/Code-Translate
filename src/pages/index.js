@@ -11,8 +11,8 @@ import BoxContent from '@/Components/Box-content'
 export default function Home() {
   return (
     <main>
-      <Center>
-      <Box display={'flex'}  width={'90vh'} alignItems={'center'} padding={'5'} justifyContent={'left'} height={'20vh'} borderRadius={'lg'} bgColor={'blackAlpha.300'} margin={'10vh'}>
+      <div className='flex flex-col items-center justify-center '>
+      <Box display={'flex'}  width={'90vh'} alignItems={'center'} padding={'5'} height={'20vh'} borderRadius={'lg'} bgColor={'blackAlpha.300'} margin={'10vh'}>
         <h1 className='text-xl'>
           Welcome to <b className='underline decoration-sky-500'>Code languaje Converter!</b>🎉
           <p className='text-base'>👇 Paste your code snippet below and the AI will convert it to the selected language!<br/>
@@ -23,7 +23,8 @@ export default function Home() {
         🤖
         </p>
       </Box>
-      </Center>
+      </div>
+
       <Selector/>
       <BoxContent/>
     </main>
