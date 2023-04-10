@@ -5,6 +5,8 @@ import {
   Box,
   Center
 } from '@chakra-ui/react'
+import Selector from '@/Components/Selector'
+import BoxContent from '@/Components/Box-content'
 
 export default function Home() {
   return (
@@ -22,7 +24,8 @@ export default function Home() {
         </p>
       </Box>
       </Center>
-
+      <Selector/>
+      <BoxContent/>
     </main>
   )
 }
