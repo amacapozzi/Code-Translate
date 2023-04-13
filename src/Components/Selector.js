@@ -81,6 +81,17 @@ export default function Selector({code}) {
               duration: 4000,
               isClosable: true,
             });
+            break;
+          
+            case 500: 
+            toast({
+              title: "Error",
+              description: data.error,
+              status: "error",
+              duration: 4000,
+              isClosable: true,
+            });
+            break;
 
           case 200:
             setResult(data.succes)
