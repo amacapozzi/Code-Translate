@@ -8,8 +8,6 @@ export default function Selector({code}) {
   const translateToInput = useRef(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState();
-  
-  console.log(code)
 
 
   useEffect(() => {
@@ -47,7 +45,6 @@ export default function Selector({code}) {
     };
 
     const handleApiConverter = async (e) => {
-      const code = localStorage.getItem('code');
       setLoading(true)
       try {
         const res = await window.fetch(
