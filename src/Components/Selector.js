@@ -1,3 +1,4 @@
+import { Toast } from "@chakra-ui/react";
 import { Button, Select, useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import BoxContent from "./Box-content";
@@ -45,6 +46,15 @@ export default function Selector({code}) {
     };
 
     const handleApiConverter = async (e) => {
+      if(code === undefined || '' || null) {
+        return toast({
+          title: "Error",
+          description: "Please enter a code for translate!",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+        });
+      }
       setLoading(true)
       try {
         const res = await window.fetch(
@@ -55,10 +65,6 @@ export default function Selector({code}) {
         );
 
         const data = await res.json();
-
-     
-    
-
         switch (res.status) {
           case 400:
             toast({
@@ -69,7 +75,6 @@ export default function Selector({code}) {
               isClosable: true,
             });
             break;
-
           case 404:
             toast({
               title: "Error",
@@ -89,7 +94,6 @@ export default function Selector({code}) {
               isClosable: true,
             });
             break;
-
           case 200:
             setResult(data.succes)
             toast({
