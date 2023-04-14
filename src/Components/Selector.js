@@ -3,13 +3,13 @@ import { Button, Select, useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import BoxContent from "./Box-content";
 
-export default function Selector({code}) {
+export default function Selector(props) {
   const toast = useToast();
   const translateInput = useRef(null);
   const translateToInput = useRef(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState();
-
+  const [code, setCode] = useState('');
 
   useEffect(() => {
     const translateValue = localStorage.getItem("translate");
@@ -24,6 +24,10 @@ export default function Selector({code}) {
     }
   }, []);
 
+  const handleGetCode = (e) => {
+    setCode(e.target.value);
+  };
+  
   const handleConverter = (e) => {
     const TRANSLATE = translateInput.current.value;
     const TRANSLATE_TO = translateToInput.current.value;
@@ -95,7 +99,7 @@ export default function Selector({code}) {
             });
             break;
           case 200:
-            setResult(data.succes)
+            setResult(data.translate)
             toast({
               title: "Success",
               description: 'Successfully converted code',
@@ -114,6 +118,7 @@ export default function Selector({code}) {
     handleApiConverter();
   };
 
+  
   const handleValue = (e) => {
     e.preventDefault();
 
@@ -129,9 +134,9 @@ export default function Selector({code}) {
     }
   };
 
+
   return (
     <main>
-      {result && <BoxContent result={result}/>}
       <div className="flex gap-2 items-center justify-center">
         <div className="flex flex-col gap-2 items-center">
           <p className="text-base underline decoration-sky-500 font-sans">Input</p>
@@ -168,6 +173,8 @@ export default function Selector({code}) {
           {loading ? 'Loading...': 'convert code!'}
         </Button>
       </div>
+      <BoxContent onChange={handleGetCode} result={result}
+      />
     </main>
   );
 }

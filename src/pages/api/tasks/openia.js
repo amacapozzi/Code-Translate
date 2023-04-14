@@ -46,7 +46,7 @@ export default async function handlerOpenIa(req, res) {
     const responseIA = response.data.choices[0].message
     console.log(responseIA.content);
 
-    res.status(200).json({ succes: responseIA.content });
+    res.status(200).json({ translate : responseIA.content });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error " + error });
